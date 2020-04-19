@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import './App.css';
 import { connect } from 'react-redux';
+import { clickButton } from './actions/ClickActions';
 
-function App({ newValue }) {
+function App({ newValue, clickButton}) {
   const [inputValue, setInputValue] = useState('');
   
   const inputChange = event => {
@@ -11,10 +12,14 @@ function App({ newValue }) {
 
   return (
     <div className="App" style={{ paddingTop: '10px' }}>
-        <input type='text' />
-        <button>
+        <input 
+          type='text' 
+          onChange={inputChange}
+          value={inputValue}
+        />
+        <button onClick={() => clickButton(inputValue)}>
           Click me!
-        </button>
+          </button>
         <h1>{newValue}</h1>
       </div>
   );
@@ -24,4 +29,6 @@ const mapStateToProps = state => ({
   newValue: state.clickState.newValue
 });
 
-export default connect(mapStateToProps)(App);
+const mapDispachToProps = { clickButton };
+
+export default connect(mapStateToProps, mapDispachToProps)(App);
