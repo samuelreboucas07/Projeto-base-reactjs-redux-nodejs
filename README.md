@@ -1,1 +1,1 @@
-# Projeto básico comunicando utilizando Reactjs, Redux e Nodejs
+# Projeto básico utilizando Reactjs, Redux e Nodejs
